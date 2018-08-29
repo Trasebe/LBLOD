@@ -1,5 +1,5 @@
 const DocTypes = {
-  WATCHMOVEMENT: "watchmovement"
+  DECISION: "decision"
 };
 
 module.exports = DocTypes;

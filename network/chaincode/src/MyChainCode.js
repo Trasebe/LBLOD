@@ -1,19 +1,10 @@
 import "babel-polyfill";
-
-// Initialize Ledger Function (Optional)
-import initLedger from "./utils/Initialize";
-
-// Modules
-// import shim from "fabric-shim";
-const shim = require("fabric-shim");
-// const initLedger = require("./utils/Initialize");
-
-// CRUD Actions X
-const WatchMovementCreate = require("./Watchmovement/Create");
-const WatchMovementQueryAll = require("./Watchmovement/QueryAll");
+import shim from "fabric-shim";
 
 // Helpers
-const ErrorMessages = require("./utils/ErrorMessages");
+import * as ErrMsg from "./utils/ErrorMessages";
+
+import PublishDecision from "./Decision/publish";
 
 const Chaincode = class {
   async Invoke(stub) {
@@ -21,7 +12,7 @@ const Chaincode = class {
 
     const method = this[fcn];
     if (!method) {
-      throw new Error(ErrorMessages.FunctionNotFound(fcn));
+      throw new Error(ErrMsg.FunctionNotFound(fcn));
     }
 
     try {
@@ -34,13 +25,9 @@ const Chaincode = class {
 
   // The Init method is called when the Smart Contract is instantiated by the blockchain network
   // Best practice is to have any Ledger initialization in separate function -- see initLedger()
-  async Init(stub) {
-    // Initialize Ledger
-    this.initLedger = initLedger;
-
+  async Init() {
     // Bind other functions
-    this.watchmovement_create = WatchMovementCreate;
-    this.watchmovement_query_all = WatchMovementQueryAll;
+    this.publishDecision = PublishDecision;
 
     return shim.success();
   }
