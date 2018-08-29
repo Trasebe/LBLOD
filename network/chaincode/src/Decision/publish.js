@@ -3,17 +3,19 @@ import { exists } from "../utils";
 import * as ErrMsg from "../utils/ErrorMessages";
 
 async function Create(stub, obj) {
-  // decreases size of args as it strips the key out of it
-  const decesion = new Decision(obj);
+  const decision = new Decision(obj);
+  const key = decision.getId();
 
-  // Check if key already exists
-  const keyExists = await exists(stub, decesion.decesionId);
+  console.log("key", key);
+  console.log("decision", decision);
+  console.log("key", decision.toState());
+
+  const keyExists = await exists(stub, key);
   if (keyExists) {
-    throw new Error(ErrMsg.AlreadyExists(decesion.decesionId));
+    throw new Error(ErrMsg.AlreadyExists(key));
   }
 
-  // Update ledger with the new object and it's key
-  return stub.putState(decesion.decesionId, decesion.toState());
+  return stub.putState(key, decision.toState());
 }
 
 export default Create;

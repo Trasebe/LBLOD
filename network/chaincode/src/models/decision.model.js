@@ -1,14 +1,10 @@
 import * as yup from "yup";
-import { DocTypes } from "../utils/Enums";
 import BaseModel from "./base.model";
 
 export default class Decision extends BaseModel {
   constructor(decision) {
     super(decision);
-    this.decision = {
-      docType: DocTypes.DECISION,
-      ...decision
-    };
+
     this.validate(this.decision);
   }
 

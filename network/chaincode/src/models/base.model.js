@@ -1,6 +1,21 @@
 import * as ErrMsg from "../utils/ErrorMessages";
+import { DocTypes } from "../utils/Enums";
+import { toJSON } from "../utils";
 
-export default class Decision {
+export default class BaseModel {
+  constructor(decision) {
+    const decisionParsed = toJSON(decision[0]);
+
+    this.decision = {
+      ...decisionParsed,
+      docType: DocTypes.DECISION
+    };
+  }
+
+  get = () => this.decision;
+
+  getId = () => this.decision.decisionId;
+
   toState = myObj => {
     try {
       return Buffer.from(JSON.stringify(myObj));

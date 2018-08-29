@@ -13,12 +13,7 @@ export default class ChaincodeService {
     this.eventHub = null;
   }
 
-  prepareRequest = async (
-    user,
-    functionName,
-    funcArgs = [""],
-    invocation = true
-  ) =>
+  prepareRequest = async (user, fcn, args = {}, invocation = true) =>
     new Promise(async resolve => {
       this.fabricClient = network.getFabricClient();
       this.channel = network.getChannel();
@@ -41,8 +36,8 @@ export default class ChaincodeService {
       const request = {
         // targets: let default to the peer assigned to the client
         chaincodeId: config.CHAINCODE_NAME,
-        fcn: functionName,
-        args: JSON.stringify(funcArgs)
+        fcn,
+        args: [JSON.stringify(args)]
       };
 
       if (invocation) {
