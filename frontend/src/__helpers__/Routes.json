@@ -1,0 +1,48 @@
+{
+  "nav": [
+    {
+      "name": "nav 1",
+      "location": "/",
+      "subNav": [
+        {
+          "name": "HomeSubNav",
+          "icon": "desktop",
+
+          "options": [
+            {
+              "name": "subNav 1",
+              "location": "/login"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "test1",
+      "location": "/login",
+      "subNav": [
+        {
+          "parent": "/login",
+          "name": "LoginSubNav",
+          "icon": "desktop",
+          "options": [
+            {
+              "name": "Login subnav option 1",
+              "location": "/login/test"
+            }
+          ]
+        },
+        {
+          "name": "LoginSubNav2 - No Options",
+          "icon": "desktop",
+          "location": "/notfound"
+        },
+        {
+          "name": "LoginSubNav2 - No Options",
+          "icon": "desktop",
+          "location": "/notfound"
+        }
+      ]
+    }
+  ]
+}

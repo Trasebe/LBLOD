@@ -1,0 +1,30 @@
+{
+  "parser": "babel-eslint",
+  "plugins": ["node", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha": true,
+    "jest": true
+  },
+  "extends": ["eslint:recommended", "airbnb-base", "plugin:node/recommended", "prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "node/exports-style": ["error", "module.exports"],
+    "node/no-unsupported-features": ["off"],
+    "node/no-unsupported-features/es-syntax": ["off"],
+    "node/no-unpublished-require": ["off"],
+    "import/no-dynamic-require": ["off"],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true }],
+    "consistent-return": ["off"],
+    "array-callback-return":"off",
+    "no-underscore-dangle": "off",
+  }
+}
+
+
+

@@ -1,0 +1,4 @@
+.idea/
+lblod-network/**/*.card
+lblod-network/**/composer-logs
+lblod-network/node_modules
