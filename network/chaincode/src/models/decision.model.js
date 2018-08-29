@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import DocTypes from "../utils/DocTypes";
+import { DocTypes } from "../utils/Enums";
 import BaseModel from "./base.model";
 
 export default class Decision extends BaseModel {

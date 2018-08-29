@@ -1,42 +1,11 @@
 {
   "presets": [
-    "env"
+    "@babel/preset-env"
   ],
   "plugins": [
-    "dynamic-import-node",
-    "transform-class-properties",
-    "transform-es2015-modules-commonjs",
-    "babel-plugin-transform-object-rest-spread"
+    "@babel/plugin-proposal-class-properties"
   ],
   "ignore": [
     "dist/"
-  ],
-  "env": {
-    "prod": {
-    },
-    "test": {
-      "presets": [
-        "env"
-      ],
-      "plugins": [
-        "dynamic-import-node",
-        "transform-class-properties",
-        "transform-es2015-modules-commonjs"
-      ]
-    },
-    "dev": {
-      "ignore": [
-        "src/__tests__/**/*.js*",
-        "./src/__mocks__"
-      ],
-      "presets": [
-        "env"
-      ],
-      "plugins": [
-        "dynamic-import-node",
-        "transform-class-properties",
-        "transform-es2015-modules-commonjs"
-      ]
-    }
-  }
+  ]
 }

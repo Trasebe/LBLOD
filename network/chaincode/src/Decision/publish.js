@@ -16,4 +16,4 @@ async function Create(stub, obj) {
   return stub.putState(decesion.decesionId, decesion.toState());
 }
 
-module.exports = Create;
+export default Create;

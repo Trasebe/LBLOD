@@ -1,8 +1,4 @@
-const stateObject = require("./stateObject.json");
-
-module.exports = {
-  getState: jest.fn(() =>
-    Promise.resolve(Buffer.from(JSON.stringify(stateObject.getState)))
-  ),
-  putState: jest.fn(() => stateObject.putState)
+export default {
+  getState: jest.fn(() => Promise.resolve(Buffer.from(JSON.stringify({})))),
+  putState: jest.fn(() => {})
 };

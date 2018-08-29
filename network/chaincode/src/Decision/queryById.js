@@ -1,7 +1,15 @@
-const format = "utf8";
+import * as ErrMsg from "../utils/ErrorMessages";
 
-async function queryById(stub, arg) {
-  return stub.getState(arg);
+const argsExpected = 1;
+
+async function queryById(stub, args) {
+  if (args.length !== argsExpected) {
+    ErrMsg.InvalidNumberOfArgs(argsExpected);
+  }
+
+  const key = args.shift();
+
+  return stub.getState(key);
 }
 
-module.exports = queryById;
+export default queryById;
