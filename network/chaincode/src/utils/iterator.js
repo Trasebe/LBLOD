@@ -1,5 +1,5 @@
 import { FORMAT } from "./settings";
-import { toJSON } from "./index";
+import { toJSON } from "./Parser";
 
 const iteratorExecutor = async iterator => {
   const allResults = [];

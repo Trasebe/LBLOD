@@ -1,6 +1,5 @@
-import * as ErrMsg from "../utils/ErrorMessages";
 import { DocTypes } from "../utils/Enums";
-import { toJSON } from "../utils";
+import { toJSON, toState } from "../utils/Parser";
 
 export default class BaseModel {
   constructor(decision) {
@@ -14,21 +13,7 @@ export default class BaseModel {
 
   get = () => this.decision;
 
+  getAsBytes = () => toState(this.decision);
+
   getId = () => this.decision.decisionId;
-
-  toState = myObj => {
-    try {
-      return Buffer.from(JSON.stringify(myObj));
-    } catch (e) {
-      throw new Error(ErrMsg.FailedToParse(e));
-    }
-  };
-
-  fromState = myObjAsBytes => {
-    try {
-      return JSON.parse(myObjAsBytes.toString());
-    } catch (e) {
-      throw new Error(ErrMsg.FailedToParse(myObjAsBytes));
-    }
-  };
 }
