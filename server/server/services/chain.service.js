@@ -42,7 +42,7 @@ export default class ChaincodeService {
         // targets: let default to the peer assigned to the client
         chaincodeId: config.CHAINCODE_NAME,
         fcn: functionName,
-        args: funcArgs
+        args: JSON.stringify(funcArgs)
       };
 
       if (invocation) {
@@ -102,11 +102,12 @@ export default class ChaincodeService {
           proposalResponses[0].response.status === 200
         )
       ) {
-        const errResponse =
-          proposalResponses[0].details === undefined
-            ? proposalResponses[0].response.message
-            : proposalResponses[0].details;
-        return reject(new Error(errResponse));
+        // TODO fix this
+        // const errResponse =
+        //   proposalResponses[0].details === undefined
+        //     ? proposalResponses[0].response.message
+        //     : proposalResponses[0].details;
+        return reject(new Error("Error"));
       }
 
       const result = await this.processProposal(

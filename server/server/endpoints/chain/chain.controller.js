@@ -26,7 +26,7 @@ const query = async (req, res, next) => {
 
   const parsedFuncArgs = funcArgs.selector
     ? [JSON.stringify(funcArgs)]
-    : Object.values(funcArgs);
+    : funcArgs;
 
   try {
     const request = await chaincodeService.prepareRequest(
@@ -57,9 +57,7 @@ const invoke = async (req, res) => {
     const request = await chaincodeService.prepareRequest(
       username,
       funcName,
-      Object.values({
-        ...funcArgs
-      })
+      funcArgs
     );
 
     const initResult = await chaincodeService.invoke(request);

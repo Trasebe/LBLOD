@@ -63,6 +63,10 @@ const login = async (req, res, next) => {
 const register = async (req, res, next) => {
   const { username, password, role, affiliation, identification } = req.body;
 
+  console.log("===================");
+  console.log(req.body);
+  console.log("===================");
+
   const encryptedPass = await bcrypt
     .hash(password, config.saltRounds)
     .catch(e => next(new APIError(e.message, httpStatus.UNAUTHORIZED, true)));
